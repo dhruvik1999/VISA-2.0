@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "387239126373",
+    "firebase_url": "https://visa-atms-2.firebaseio.com",
+    "project_id": "visa-atms-2",
+    "storage_bucket": "visa-atms-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387239126373:android:232d624174153dcc182d8c",
+        "android_client_info": {
+          "package_name": "com.visa.ATM"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387239126373-vhd904i5qtjedl72o5nhm0ampvtre4p9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.visa.ATM",
+            "certificate_hash": "3ae8a702d374ea90863a0a48fdea9264d676bf80"
+          }
+        },
+        {
+          "client_id": "387239126373-v3oc9asdaogdfsg7ahh0dcrm4hbrmbe7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1mJ2-Q9_wtDd6VKJXDtUW28BoD_P4NnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387239126373-v3oc9asdaogdfsg7ahh0dcrm4hbrmbe7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
