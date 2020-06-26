@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OptionsLogin">
+
+    <Button
+        android:id="@+id/b_cashProvide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cash Provider"
+        />
+
+    <Button
+        android:id="@+id/b_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="user"
+        android:layout_below="@+id/b_cashProvide"
+        />
+
+</RelativeLayout>
