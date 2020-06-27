@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.visa.ATM.CashProvider.HomeCashProvider;
+import com.visa.ATM.User.GoogleMap;
 
 import java.util.Objects;
 
@@ -62,7 +63,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"" + option, Toast.LENGTH_SHORT).show();
                     if(option.equals("cp"))
                     {
-                        cashProviders[0] = FirebaseDatabase.getInstance().getReference().child("CashProviders");
+                        cashProviders[0] = FirebaseDatabase.getInstance().getReference().child("cashProviders");
                         cashProviders[0].addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,11 +93,14 @@ public class SignUp extends AppCompatActivity {
                             newCashProvider.setName(Name.getText().toString());
                             newCashProvider.setPassword(Password.getText().toString());
 
-                            String cashProviderID = cashProviders[0].push().getKey();
+//                            String cashProviderID = cashProviders[0].push().getKey();
+                            String cashProviderID = Name.getText().toString();
                             cashProviders[0].child(cashProviderID).setValue(newCashProvider);
 
+                            data.userId = Name.getText().toString();
+                            data.password = Password.getText().toString();
                             Intent i = new Intent(getApplicationContext(), HomeCashProvider.class);
-                            i.putExtra("cashProviderID",cashProviderID);
+
                             startActivity(i);
 
                         }
@@ -115,7 +119,6 @@ public class SignUp extends AppCompatActivity {
                                     {
                                         flag_us[0] = 1;
                                     }
-
                                 }
                             }
 
@@ -133,9 +136,14 @@ public class SignUp extends AppCompatActivity {
                             newUser.setName(Name.getText().toString());
                             newUser.setPassword(Password.getText().toString());
 
-                            String userID = users[0].push().getKey();
+//                            String userID = users[0].push().getKey();
+//                            Toast.makeText(getApplicationContext(),"US : "+userID,Toast.LENGTH_SHORT).show();
+                            String userID = Name.getText().toString();
                             users[0].child(userID).setValue(newUser);
 
+                            data.userId = Name.getText().toString();
+                            data.password = Password.getText().toString();
+                            startActivity(new Intent(getApplicationContext(), GoogleMap.class));
 //                    Intent i = new Intent(getApplicationContext(), User_Home.class);
 //                    i.putExtra("userID",userID);
 //                    startActivity(i);

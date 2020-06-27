@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.visa.ATM.CashProvider.HomeCashProvider;
+import com.visa.ATM.User.GoogleMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,12 +73,15 @@ public class Login extends AppCompatActivity {
                             {
                                 CashProviders cashp = cashProvider.getValue(CashProviders.class);
                                 assert cashp != null;
-                                if (cashp.email.equals(Email.getText().toString()))
+                                if (cashp.name.equals(Email.getText().toString()))
                                 {
                                     if (cashp.password.equals(Password.getText().toString()))
                                     {
                                         Toast.makeText(getApplicationContext(), "Login Is Successful", Toast.LENGTH_SHORT).show();
                                         //login kardo start cash provider page
+                                        data.userId = Email.getText().toString();
+                                        data.password = Password.getText().toString();
+                                        startActivity(new Intent(getApplicationContext(), HomeCashProvider.class));
                                     }
                                 }
                             }
@@ -95,12 +100,15 @@ public class Login extends AppCompatActivity {
                             for (DataSnapshot user : snapshot.getChildren())
                             {
                                 Users usr = user.getValue(Users.class);
-                                if (usr.email.equals(Email.getText().toString()))
+                                if (usr.name.equals(Email.getText().toString()))
                                 {
                                     if (usr.password.equals(Password.getText().toString()))
                                     {
                                         Toast.makeText(getApplicationContext(), "Login Is Successful", Toast.LENGTH_SHORT).show();
                                         //login kardo start users page
+                                        data.userId = Email.getText().toString();
+                                        data.password = Password.getText().toString();
+                                        startActivity(new Intent(getApplicationContext(), GoogleMap.class));
                                     }
                                 }
                             }
