@@ -56,7 +56,8 @@ public class SignUp extends AppCompatActivity {
         signUpBotton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Password.toString().equals(ConfirmPassword.toString()))
+
+                if (Password.getText().toString().equals(ConfirmPassword.getText().toString()))
                 {
                     Toast.makeText(getApplicationContext(),"" + option, Toast.LENGTH_SHORT).show();
                     if(option.equals("cp"))
@@ -69,7 +70,7 @@ public class SignUp extends AppCompatActivity {
                                 {
                                     CashProviders cashp = cashProvider.getValue(CashProviders.class);
                                     assert cashp != null;
-                                    if (cashp.email.equals(Email.toString()))
+                                    if (cashp.email.equals(Email.getText().toString()))
                                     {
                                         flag_cp[0] = 1;
                                     }
@@ -87,9 +88,9 @@ public class SignUp extends AppCompatActivity {
                         {
                             //do signup
 
-                            newCashProvider.setMail(Email.toString());
-                            newCashProvider.setName(Name.toString());
-                            newCashProvider.setPassword(Password.toString());
+                            newCashProvider.setMail(Email.getText().toString());
+                            newCashProvider.setName(Name.getText().toString());
+                            newCashProvider.setPassword(Password.getText().toString());
 
                             String cashProviderID = cashProviders[0].push().getKey();
                             cashProviders[0].child(cashProviderID).setValue(newCashProvider);
@@ -110,7 +111,7 @@ public class SignUp extends AppCompatActivity {
                                 {
                                     Users usr = user.getValue(Users.class);
                                     assert usr != null;
-                                    if (usr.email.equals(Email.toString()))
+                                    if (usr.email.equals(Email.getText().toString()))
                                     {
                                         flag_us[0] = 1;
                                     }
@@ -128,9 +129,9 @@ public class SignUp extends AppCompatActivity {
                         {
                             //do signup
 
-                            newUser.setMail(Email.toString());
-                            newUser.setName(Name.toString());
-                            newUser.setPassword(Password.toString());
+                            newUser.setMail(Email.getText().toString());
+                            newUser.setName(Name.getText().toString());
+                            newUser.setPassword(Password.getText().toString());
 
                             String userID = users[0].push().getKey();
                             users[0].child(userID).setValue(newUser);

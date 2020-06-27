@@ -44,11 +44,12 @@ public class Login extends AppCompatActivity {
         final Button LoginButton=(Button)findViewById(R.id.loginbutton) ;
         final Button SignupButton = (Button) findViewById(R.id.signupbutton);
 
-        cashProviders = FirebaseDatabase.getInstance().getReference().child("CashProviders");
+        cashProviders = FirebaseDatabase.getInstance().getReference().child("cashProviders");
         users = FirebaseDatabase.getInstance().getReference().child("Users");
 
         Intent intent = getIntent();
         final String option = Objects.requireNonNull(intent.getExtras()).getString("option");
+        Toast.makeText(getApplicationContext(),option,Toast.LENGTH_SHORT).show();
 
         SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +71,9 @@ public class Login extends AppCompatActivity {
                             {
                                 CashProviders cashp = cashProvider.getValue(CashProviders.class);
                                 assert cashp != null;
-                                if (cashp.email.equals(Email.toString()))
+                                if (cashp.email.equals(Email.getText().toString()))
                                 {
-                                    if (cashp.password.equals(Password.toString()))
+                                    if (cashp.password.equals(Password.getText().toString()))
                                     {
                                         Toast.makeText(getApplicationContext(), "Login Is Successful", Toast.LENGTH_SHORT).show();
                                         //login kardo start cash provider page
@@ -94,9 +95,9 @@ public class Login extends AppCompatActivity {
                             for (DataSnapshot user : snapshot.getChildren())
                             {
                                 Users usr = user.getValue(Users.class);
-                                if (usr.email.equals(Email.toString()))
+                                if (usr.email.equals(Email.getText().toString()))
                                 {
-                                    if (usr.password.equals(Password.toString()))
+                                    if (usr.password.equals(Password.getText().toString()))
                                     {
                                         Toast.makeText(getApplicationContext(), "Login Is Successful", Toast.LENGTH_SHORT).show();
                                         //login kardo start users page
