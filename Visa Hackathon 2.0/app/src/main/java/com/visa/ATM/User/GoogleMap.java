@@ -7,9 +7,11 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -21,7 +23,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.visa.ATM.CashProvider.HomeCashProvider;
+import com.visa.ATM.CashProviders;
 import com.visa.ATM.R;
+import com.visa.ATM.data;
 
 
 public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
@@ -43,8 +53,7 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(com.google.android.gms.maps.GoogleMap googleMap) {
         setCurrentLocation(googleMap);
-
-
+        updateAllCashprovidersLocation(googleMap);
     }
 
     public void setCurrentLocation(final com.google.android.gms.maps.GoogleMap googleMap){
@@ -70,4 +79,27 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
             ActivityCompat.requestPermissions((Activity)this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
         }
     }
+
+    public void updateAllCashprovidersLocation(final com.google.android.gms.maps.GoogleMap googleMap){
+        DatabaseReference cashProviders = FirebaseDatabase.getInstance().getReference().child("cashProviders");
+        cashProviders.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot cashProvider : snapshot.getChildren())
+                {
+                    CashProviders cashp = cashProvider.getValue(CashProviders.class);
+                    assert cashp != null;
+//                    Log.d("Location",""+cashp.getLatitude() +  " " + cashp.getLongitude()  );
+                    LatLng point = new LatLng(cashp.getLatitude(),cashp.getLongitude());
+                    googleMap.addMarker(new MarkerOptions().position(point).title("VISA atm : " + cashp.getName() ));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
