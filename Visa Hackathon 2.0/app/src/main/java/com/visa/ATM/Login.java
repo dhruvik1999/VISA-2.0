@@ -66,7 +66,8 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 assert option != null;
                 if (option.equals("cp")){
-                    cashProviders.addValueEventListener(new ValueEventListener() {
+
+                    cashProviders.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot cashProvider : snapshot.getChildren())
@@ -94,7 +95,7 @@ public class Login extends AppCompatActivity {
                     });
                 }
                 else if (option.equals("us")){
-                    users.addValueEventListener(new ValueEventListener() {
+                    users.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot user : snapshot.getChildren())
