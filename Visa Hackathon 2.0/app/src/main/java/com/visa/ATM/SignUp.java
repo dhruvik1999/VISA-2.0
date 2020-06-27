@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.visa.ATM.CashProvider.HomeCashProvider;
 import com.visa.ATM.User.GoogleMap;
+import com.visa.ATM.User.UserHomeScreen;
 
 import java.util.Objects;
 
@@ -143,7 +144,7 @@ public class SignUp extends AppCompatActivity {
 
                             data.userId = Name.getText().toString();
                             data.password = Password.getText().toString();
-                            startActivity(new Intent(getApplicationContext(), GoogleMap.class));
+                            startActivity(new Intent(getApplicationContext(), UserHomeScreen.class));
 //                    Intent i = new Intent(getApplicationContext(), User_Home.class);
 //                    i.putExtra("userID",userID);
 //                    startActivity(i);

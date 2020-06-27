@@ -20,6 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -54,6 +55,24 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(com.google.android.gms.maps.GoogleMap googleMap) {
         setCurrentLocation(googleMap);
         updateAllCashprovidersLocation(googleMap);
+
+        googleMap.setOnInfoWindowClickListener(new com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Toast.makeText(getApplicationContext(),marker.getTitle(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),RequestHelper.class);
+                intent.putExtra("ATM_NAME",marker.getTitle());
+                startActivity(intent);
+            }
+        });
+
+//        googleMap.setOnMarkerClickListener(new com.google.android.gms.maps.GoogleMap.OnMarkerClickListener() {
+//            @Override
+//            public boolean onMarkerClick(Marker marker) {
+//                return false;
+//            }
+//        });
+
     }
 
     public void setCurrentLocation(final com.google.android.gms.maps.GoogleMap googleMap){
