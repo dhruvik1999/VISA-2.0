@@ -110,7 +110,7 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
                     assert cashp != null;
 //                    Log.d("Location",""+cashp.getLatitude() +  " " + cashp.getLongitude()  );
                     LatLng point = new LatLng(cashp.getLatitude(),cashp.getLongitude());
-                    googleMap.addMarker(new MarkerOptions().position(point).title("VISA atm : " + cashp.getName() ));
+                    googleMap.addMarker(new MarkerOptions().position(point).title("VISA atm :" + cashp.getName()));
                 }
             }
 

@@ -79,7 +79,7 @@
         android:gravity="center"
 
         android:layout_below="@+id/tv_l_amount"
-        android:text="-"
+        android:hint="Request Amount"
         android:textSize="30dp"
         />
 
