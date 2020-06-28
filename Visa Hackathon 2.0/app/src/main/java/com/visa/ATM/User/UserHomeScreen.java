@@ -2,6 +2,8 @@ package com.visa.ATM.User;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +16,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.visa.ATM.CashProvider.MyAdapter;
 import com.visa.ATM.R;
 import com.visa.ATM.Request;
 import com.visa.ATM.Response;
 import com.visa.ATM.data;
 
+import java.util.ArrayList;
+
 public class UserHomeScreen extends AppCompatActivity {
 
     Button bLocateAtm;
+    ArrayList<Response> responses;
+    UserAdapter listAdapter;
+    LinearLayoutManager layoutManager;
+    RecyclerView recycler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +47,17 @@ public class UserHomeScreen extends AppCompatActivity {
             }
         });
 
+        recycler = findViewById(R.id.user_recycler);
+        layoutManager = new LinearLayoutManager(this);
+        recycler.setLayoutManager(layoutManager);
+        listAdapter = new UserAdapter(responses, this);
+        recycler.setAdapter(listAdapter);
+
     }
 
     public void init(){
         bLocateAtm = this.findViewById(R.id.b_locate_atm);
+        responses = new ArrayList<>();
     }
 
     public void getRequestsData(){
@@ -48,9 +65,12 @@ public class UserHomeScreen extends AppCompatActivity {
         refResponse.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                responses.clear();
                 for (DataSnapshot req : snapshot.getChildren()){
                     Response response = req.getValue(Response.class);
                     Log.d("Check : ",response.getName()+" " + response.getAmount() + " " + response.getRate()+" " +response.isStatus());
+                    responses.add(response);
+                    listAdapter.notifyDataSetChanged();
                 }
             }
 
