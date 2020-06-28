@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".User.RequestHelper"></activity>
+        <activity android:name=".User.PayHelper"></activity>
+        <activity android:name=".User.RequestHelper" />
         <activity android:name=".User.UserHomeScreen" />
         <activity android:name=".Login" />
         <activity android:name=".CashProvider.HomeCashProvider" />
