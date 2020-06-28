@@ -19,7 +19,9 @@ public class Response {
         this.status = status;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public double getAmount() {
         return amount;
