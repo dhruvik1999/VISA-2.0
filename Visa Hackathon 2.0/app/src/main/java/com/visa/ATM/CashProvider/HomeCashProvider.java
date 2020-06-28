@@ -95,7 +95,9 @@ public class HomeCashProvider extends  AppCompatActivity {
 
 
         FetchCordinates fetchCordinates=new FetchCordinates();
+       // Toast.makeText(HomeCashProvider.this,"Starting execution",Toast.LENGTH_SHORT).show();
         fetchCordinates.execute();
+
 
 
 
@@ -132,6 +134,7 @@ public class HomeCashProvider extends  AppCompatActivity {
                         LocationManager.NETWORK_PROVIDER, 1, 0, mVeggsterLocationListener);
 
 
+
             }
 
             @Override
@@ -143,9 +146,9 @@ public class HomeCashProvider extends  AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
 
-                Toast.makeText(HomeCashProvider.this,
-                        "LATITUDE :" + lati + " LONGITUDE :" + longi,
-                        Toast.LENGTH_LONG).show();
+               // Toast.makeText(HomeCashProvider.this,
+                 //       "LATITUDE :" + lati + " LONGITUDE :" + longi,
+                   //     Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -176,13 +179,14 @@ public class HomeCashProvider extends  AppCompatActivity {
                         Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
                         DatabaseReference forcashprovider=FirebaseDatabase.getInstance().getReference();
                         String username=data.userId;
+
                         forcashprovider.child("cashProviders").child(username).child("latitude").setValue(lati);
                         forcashprovider.child("cashProviders").child(username).child("longitude").setValue(longi);
-
+                        Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         // progDailog.dismiss();
-                        // Toast.makeText(getApplicationContext(),"Unable to get Location"
-                        // , Toast.LENGTH_LONG).show();
+                         Toast.makeText(getApplicationContext(),"Unable to get Location"
+                        , Toast.LENGTH_LONG).show();
                     }
 
                 }
