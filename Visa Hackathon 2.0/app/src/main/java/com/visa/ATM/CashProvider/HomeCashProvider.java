@@ -1,11 +1,21 @@
 package com.visa.ATM.CashProvider;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.AlertDialog;
 
+import androidx.core.app.ActivityCompat;
+
+import com.google.android.gms.common.util.Strings;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,16 +30,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.visa.ATM.R;
+import com.visa.ATM.Request;
 import com.visa.ATM.data;
 
 import java.lang.ref.Reference;
+import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class HomeCashProvider extends  AppCompatActivity {
-
+    private ArrayList<Request> requestsList = new ArrayList<>();
 
     Intent locatorService = null;
 
@@ -40,14 +58,55 @@ public class HomeCashProvider extends  AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cash_provider);
+
+        RecyclerView recycler = findViewById(R.id.recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recycler.setLayoutManager(layoutManager);
+        final MyAdapter listAdapter = new MyAdapter(requestsList, this);
+        recycler.setAdapter(listAdapter);
+        recycler.setAdapter(listAdapter);
+
+        //Load the date from the network or other resources
+        //into the array list asynchronously
+        String username=data.userId;
+        FirebaseDatabase.getInstance().getReference().child("cashProviders").child(username).child("Requests").addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        requestsList.clear();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Request request1 =snapshot.getValue(Request.class);
+                            Log.d("ASDASD",request1.getAmount()+"");
+                            requestsList.add(request1);
+                            listAdapter.notifyDataSetChanged();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+        listAdapter.notifyDataSetChanged();
+
+
+
+
+
+
         FetchCordinates fetchCordinates=new FetchCordinates();
         fetchCordinates.execute();
+
+
+
+
     }
+
+
+
        public class FetchCordinates extends AsyncTask<String, Integer, String> {
 
-            public double lati = 0.0;
+           public FusedLocationProviderClient fusedLocationProviderClient;
+           public double lati = 0.0;
             public double longi = 0.0;
-
             public LocationManager mLocationManager;
             public VeggsterLocationListener mVeggsterLocationListener;
 
@@ -68,14 +127,15 @@ public class HomeCashProvider extends  AppCompatActivity {
                     return;
                 }
                 mLocationManager.requestLocationUpdates(
-                        LocationManager.NETWORK_PROVIDER, 0, 0, mVeggsterLocationListener);
+                        LocationManager.NETWORK_PROVIDER, 1, 0, mVeggsterLocationListener);
 
 
             }
 
             @Override
             protected void onCancelled() {
-                mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
+                Toast.makeText(HomeCashProvider.this,"cancel",Toast.LENGTH_LONG).show();
+                //mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
             }
 
             @Override
@@ -88,11 +148,8 @@ public class HomeCashProvider extends  AppCompatActivity {
 
             @Override
             protected String doInBackground(String... params) {
-                // TODO Auto-generated method stub
+                // TODO Auto-generated method stud
 
-                while (this.lati == 0.0) {
-
-                }
                 return null;
             }
 

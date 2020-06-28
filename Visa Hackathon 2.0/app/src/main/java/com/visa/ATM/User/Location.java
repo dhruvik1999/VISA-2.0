@@ -38,7 +38,7 @@ public class Location {
 
     }
 
-    public void getLoccation(){
+    public void getLocation(){
         if(ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<android.location.Location>() {
                 @Override

@@ -8,6 +8,7 @@ public class Request {
     double amount;
 
 
+
     public void setRate(double rate) {
         this.rate = rate;
     }
