@@ -58,6 +58,8 @@ public class HomeCashProvider extends  AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cash_provider);
+        Button Accept=findViewById(R.id.accept_button);
+        Button reject=findViewById(R.id.cancel_button);
 
         RecyclerView recycler = findViewById(R.id.recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -85,6 +87,14 @@ public class HomeCashProvider extends  AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
+
+        Accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+
+            }
+        });
         listAdapter.notifyDataSetChanged();
 
 
