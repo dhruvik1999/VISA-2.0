@@ -3,7 +3,7 @@ package com.visa.ATM;
 public class Request {
 
 
-    String userName;
+    String name;
     double rate;
     double amount;
 
@@ -18,12 +18,12 @@ public class Request {
 
 
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
     public double getRate() {

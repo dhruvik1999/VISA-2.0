@@ -11,10 +11,6 @@ public class Response {
         this.amount = amount;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setRate(double rate) {
         this.rate = rate;
     }

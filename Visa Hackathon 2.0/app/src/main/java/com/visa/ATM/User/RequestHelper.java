@@ -53,7 +53,7 @@ public class RequestHelper extends AppCompatActivity {
                 Request request = new Request();
                 request.setAmount( Double.parseDouble(etAmount.getText().toString()) );
                 request.setRate((double)1.2);
-                request.setUserName(data.userId);
+                request.setName(data.userId);
 
                 reference.child("Requests").child(data.userId).setValue(request);
             }
