@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.visa.ATM.R;
 import com.visa.ATM.Response;
+import com.visa.ATM.VisaDirect.VisaDirectHome;
 import com.visa.ATM.data;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ContactHolder>
             bPay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context,PayHelper.class));
+                    context.startActivity(new Intent(context, VisaDirectHome.class));
                 }
             });
 

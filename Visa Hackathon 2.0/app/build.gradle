@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.chaquo.python'
 
 android {
     compileSdkVersion 29
@@ -12,6 +13,31 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        sourceSets {
+            main {
+                python {
+                    srcDirs = ["src/main/python"]
+                }
+            }
+        }
+
+        python {
+            buildPython "/urs/local/bin/python3"
+            buildPython "python3"
+        }
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+        python {
+            pip {
+                install "requests"
+            }
+        }
+
+
+
+
     }
 
     buildTypes {
@@ -37,5 +63,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 apply plugin: 'com.google.gms.google-services'
