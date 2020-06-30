@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        final TextView logintitle=findViewById(R.id.loginTitleTextView);
         Email=findViewById(R.id.emailEditText);
         Password=findViewById(R.id.passwordEditText);
         final Button LoginButton=(Button)findViewById(R.id.loginbutton) ;
@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 assert option != null;
                 if (option.equals("cp")){
-
+                        logintitle.setText("Merchant Login");
                     cashProviders.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -96,6 +96,7 @@ public class Login extends AppCompatActivity {
                     });
                 }
                 else if (option.equals("us")){
+                    logintitle.setText("User Login");
                     users.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
