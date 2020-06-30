@@ -115,7 +115,6 @@ public class HomeCashProvider extends  AppCompatActivity {
 
 
 
-
         FetchCordinates fetchCordinates=new FetchCordinates();
        // Toast.makeText(HomeCashProvider.this,"Starting execution",Toast.LENGTH_SHORT).show();
         fetchCordinates.execute();
@@ -127,6 +126,16 @@ public class HomeCashProvider extends  AppCompatActivity {
     }
 
 
+
+    private static long back_pressed=System.currentTimeMillis();
+    @Override
+    public void onBackPressed() {
+
+        if (back_pressed + 2000 > System.currentTimeMillis())
+            finishAffinity();
+        else Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT).show();
+        back_pressed = System.currentTimeMillis();
+    }
 
        public class FetchCordinates extends AsyncTask<String, Integer, String> {
 
@@ -201,7 +210,6 @@ public class HomeCashProvider extends  AppCompatActivity {
                         Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
                         DatabaseReference forcashprovider=FirebaseDatabase.getInstance().getReference();
                         String username=data.userId;
-
                         forcashprovider.child("cashProviders").child(username).child("latitude").setValue(lati);
                         forcashprovider.child("cashProviders").child(username).child("longitude").setValue(longi);
                         Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
