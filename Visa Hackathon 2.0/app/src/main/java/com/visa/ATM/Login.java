@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                assert option != null;
+               // assert option != null;
                 if (option.equals("cp")){
 
                     cashProviders.addListenerForSingleValueEvent(new ValueEventListener() {
