@@ -216,7 +216,7 @@ public class HomeCashProvider extends  AppCompatActivity {
 
                         lati = location.getLatitude();
                         longi = location.getLongitude();
-                        Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
+                       // Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
                         DatabaseReference forcashprovider=FirebaseDatabase.getInstance().getReference();
                         String username=data.userId;
                         forcashprovider.child("cashProviders").child(username).child("latitude").setValue(lati);
