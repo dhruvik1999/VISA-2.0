@@ -68,7 +68,6 @@ public class HomeCashProvider extends  AppCompatActivity {
         //hide the status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_user_home_screen);
 
         Dexter.withActivity(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
