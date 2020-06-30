@@ -5,16 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.RequestHelper">
+    tools:context=".User.RequestHelper"
+    android:background="@color/visacolor">
 
-    <TextView
-        android:id="@+id/tv_title"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cash Provider Details"
-        android:gravity="center"
-        android:textSize="30dp"
-        />
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:background="@color/visacolor"
+        >
+    </Button>
 
     <TextView
         android:id="@+id/tv_l_name"
