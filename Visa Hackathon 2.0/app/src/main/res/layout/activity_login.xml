@@ -101,9 +101,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="45dp"
-                android:text="Login"
+                android:text="Cash Provider Login"
                 android:textColor="@color/visacolor"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:typeface="monospace" />
 
             <TextView
