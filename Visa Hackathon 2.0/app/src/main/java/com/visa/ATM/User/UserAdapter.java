@@ -72,7 +72,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ContactHolder>
             bPay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context, VisaDirectHome.class));
+//                    context.startActivity(new Intent(context, VisaDirectHome.class));
+                    Intent intent = new Intent(context,VisaDirectHome.class);
+                    intent.putExtra("NAME",tvCpName.getText().toString());
+                    intent.putExtra("AMOUNT",tvAmount.getText().toString());
+                    intent.putExtra("RATE",tvCpRate.getText().toString());
+                    context.startActivity(intent);
+
                 }
             });
 
