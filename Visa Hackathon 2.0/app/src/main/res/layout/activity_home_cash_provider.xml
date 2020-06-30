@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/request_recycler"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CashProvider.HomeCashProvider"
-    android:background="@color/visacolor">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:scrollbars="vertical"
+    android:background="@color/white">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/visacolor"
+        android:padding="20dp"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/visacolor"
+            android:text="CASH REQUESTS FOR YOU !"
+            android:textColor="@color/white"
+            android:layout_weight="8"
+            ></Button>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:scrollbars="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/visacolor"
+            android:textColor="@color/white"
+            android:text="Powered By VISA INC."
+            android:layout_weight="8"
+            ></Button>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
