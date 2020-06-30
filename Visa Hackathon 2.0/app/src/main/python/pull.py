@@ -84,7 +84,7 @@ def getPayload(amount):
 	''')
 	return payload
 
-def pullMoney(amt):
+def pullMoney(amt=1000):
 	try:
 		r = requests.post(url,
 						cert = (cert,key),

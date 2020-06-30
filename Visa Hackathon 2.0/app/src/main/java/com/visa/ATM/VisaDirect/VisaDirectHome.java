@@ -2,7 +2,9 @@ package com.visa.ATM.VisaDirect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,7 @@ public class VisaDirectHome extends AppCompatActivity {
         bPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Handler handler = new Handler();
 
                 new Thread(new Runnable() {
                     @Override
@@ -49,15 +52,26 @@ public class VisaDirectHome extends AppCompatActivity {
 
                         Python py = Python.getInstance();
                         PyObject pyf = py.getModule("pull");
-                        PyObject obj = pyf.callAttr("pullMoney",cpAmount);
+                        final PyObject obj = pyf.callAttr("pullMoney",cpAmount);
                         Log.d("CHECK1",obj.toString());
 //                        Toast.makeText(getApplicationContext(),"Transaction pull", Toast.LENGTH_SHORT).show();
 
                         Python py1 = Python.getInstance();
                         PyObject pyf1 = py1.getModule("push");
-                        PyObject obj1 = pyf1.callAttr("pushMoney",cpAmount);
+                        final PyObject obj1 = pyf1.callAttr("pushMoney",cpAmount);
                         Log.d("CHECK",obj1.toString());
 //                        Toast.makeText(getApplicationContext(),"Transaction push", Toast.LENGTH_SHORT).show();
+
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent( getApplicationContext() , TransactionResult.class );
+                                intent.putExtra("PULL_JSON",obj.toString());
+                                intent.putExtra("PUSH_JSON",obj1.toString());
+                                startActivity(intent);
+                            }
+                        });
+
                     }
                 }).start();
 
