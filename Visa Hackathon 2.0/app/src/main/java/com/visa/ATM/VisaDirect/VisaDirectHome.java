@@ -22,11 +22,18 @@ public class VisaDirectHome extends AppCompatActivity {
             Python.start(new AndroidPlatform(this));
 
         Python py = Python.getInstance();
-        PyObject pyf = py.getModule("script");
-        PyObject obj = pyf.callAttr("callVisaDirect");
-        Toast.makeText(getApplicationContext(),obj.toString(),Toast.LENGTH_LONG).show();
+        PyObject pyf = py.getModule("pull");
+        PyObject obj = pyf.callAttr("pullMoney",1000);
+//        Toast.makeText(getApplicationContext(),obj.toString(),Toast.LENGTH_LONG).show();
+        Log.d("CHECK1",obj.toString());
 
-        Log.d("CHECK",obj.toString());
+        Python py1 = Python.getInstance();
+        PyObject pyf1 = py1.getModule("push");
+        PyObject obj1 = pyf1.callAttr("pushMoney",1000);
+        Log.d("CHECK2",obj1.toString());
+//        Toast.makeText(getApplicationContext(),obj.toString(),Toast.LENGTH_LONG).show();
+
+//        Log.d("CHECK",obj.toString());
 
     }
 }
