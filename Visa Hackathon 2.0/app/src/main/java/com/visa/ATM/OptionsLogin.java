@@ -40,7 +40,7 @@ public class OptionsLogin extends AppCompatActivity {
     }
 
     private void init(){
-        cashProvider = this.findViewById(R.id.b_cashProvider);
+        cashProvider = this.findViewById(R.id.b_cashProvide);
         user = this.findViewById(R.id.b_user);
     }
     private static long back_pressed=System.currentTimeMillis();
