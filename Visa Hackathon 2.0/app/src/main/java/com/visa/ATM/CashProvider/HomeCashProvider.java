@@ -170,8 +170,8 @@ public class HomeCashProvider extends  AppCompatActivity {
 
             @Override
             protected void onCancelled() {
-                Toast.makeText(HomeCashProvider.this,"cancel",Toast.LENGTH_LONG).show();
-                //mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
+                //Toast.makeText(HomeCashProvider.this,"cancel",Toast.LENGTH_LONG).show();
+                mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
             }
 
             @Override
