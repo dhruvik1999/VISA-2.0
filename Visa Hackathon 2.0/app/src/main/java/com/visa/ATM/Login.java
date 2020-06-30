@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-        final TextView logintitle=findViewById(R.id.loginTitleTextView);
+
         Email=findViewById(R.id.emailEditText);
         Password=findViewById(R.id.passwordEditText);
         TextView logintext=findViewById(R.id.loginTitleTextView);
@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                // assert option != null;
                 if (option.equals("cp")){
-                        logintitle.setText("Merchant Login");
+
                     cashProviders.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -109,7 +109,6 @@ public class Login extends AppCompatActivity {
                     });
                 }
                 else if (option.equals("us")){
-                    logintitle.setText("User Login");
                     users.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
