@@ -73,12 +73,12 @@ public class HomeCashProvider extends  AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse response) {
-                    Toast.makeText(HomeCashProvider.this,"You Accepted Permission !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeCashProvider.this,"You Have The Location Permission !",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onPermissionDenied(PermissionDeniedResponse response) {
-                        Toast.makeText(HomeCashProvider.this,"You Sholud Accept This Permission !!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(HomeCashProvider.this,"You Should Accept This Permission !!",Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -212,12 +212,12 @@ public class HomeCashProvider extends  AppCompatActivity {
 
                         lati = location.getLatitude();
                         longi = location.getLongitude();
-                        Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
+                       // Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
                         DatabaseReference forcashprovider=FirebaseDatabase.getInstance().getReference();
                         String username=data.userId;
                         forcashprovider.child("cashProviders").child(username).child("latitude").setValue(lati);
                         forcashprovider.child("cashProviders").child(username).child("longitude").setValue(longi);
-                        Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         // progDailog.dismiss();
                          Toast.makeText(getApplicationContext(),"Unable to get Location"
