@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_color_selector"
+    android:background="@color/visacolor"
     tools:context=".SignUp">
 
 
@@ -42,7 +42,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="72dp"
-                android:background="?attr/colorPrimaryDark"
+                android:background="@color/visacolor"
                 android:elevation="5dp"
                 android:text="@string/SignUPText"
                 android:textColor="@android:color/white"
@@ -58,7 +58,7 @@
                 android:layout_marginTop="25dp"
                 android:text="@string/signUp"
                 android:textSize="30sp"
-                android:textStyle="italic"
+                android:textColor="@color/visacolor"
                 android:typeface="monospace" />
 
             <EditText
@@ -92,16 +92,16 @@
                 android:hint="@string/confirmPasswordEdit"
                 android:inputType="textPassword" />
 
-            <TextView
-                android:id="@+id/loginReturnTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="24dp"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:text="@string/returnToLoginTextView" />
+<!--            <Button-->
+<!--                android:id="@+id/loginReturnTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginBottom="24dp"-->
+<!--                android:textColor="@color/visacolor"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="@string/returnToLoginTextView" />-->
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

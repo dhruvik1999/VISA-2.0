@@ -104,7 +104,6 @@
                 android:text="Login"
                 android:textColor="@color/visacolor"
                 android:textSize="30sp"
-                android:textStyle="italic"
                 android:typeface="monospace" />
 
             <TextView
