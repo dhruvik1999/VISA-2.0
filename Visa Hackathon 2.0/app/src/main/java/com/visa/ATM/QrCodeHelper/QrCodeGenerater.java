@@ -35,61 +35,8 @@ public class QrCodeGenerater extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                EditTextValue = editText.getText().toString();
-                EditTextValue = "{\n" +
-                        "\"acquirerCountryCode\": \"457\",\n" +
-                        "\"acquiringBin\": \"408999\",\n" +
-                        "\"amount\": \"124.02\",\n" +
-                        "\"businessApplicationId\": \"AA\",\n" +
-                        "\"cardAcceptor\": {\n" +
-                        "\"address\": {\n" +
-                        "\"country\": \"USA\",\n" +
-                        "\"county\": \"081\",\n" +
-                        "\"state\": \"CA\",\n" +
-                        "\"zipCode\": \"94404\"\n" +
-                        "},\n" +
-                        "\"idCode\": \"ABCD1234ABCD123\",\n" +
-                        "\"name\": \"Visa Inc. USA-Foster City\",\n" +
-                        "\"terminalId\": \"ABCD1234\"\n" +
-                        "},\n" +
-                        "\"cavv\": \"0700100038238906000013405823891061668252\",\n" +
-                        "\"foreignExchangeFeeTransaction\": \"11.99\",\n" +
-                        "\"localTransactionDateTime\": \"2020-06-28T20:45:02\",\n" +
-                        "\"retrievalReferenceNumber\": \"330000550000\",\n" +
-                        "\"senderCardExpiryDate\": \"2015-10\",\n" +
-                        "\"senderCurrencyCode\": \"USD\",\n" +
-                        "\"senderPrimaryAccountNumber\": \"4895142232120006\",\n" +
-                        "\"surcharge\": \"11.99\",\n" +
-                        "\"systemsTraceAuditNumber\": \"451001\",\n" +
-                        "\"nationalReimbursementFee\": \"11.22\",\n" +
-                        "\"cpsAuthorizationCharacteristicsIndicator\": \"Y\",\n" +
-                        "\"addressVerificationData\": {\n" +
-                        "\"street\": \"XYZ St\",\n" +
-                        "\"postalCode\": \"12345\"\n" +
-                        "},\n" +
-                        "\"settlementServiceIndicator\": \"9\",\n" +
-                        "\"colombiaNationalServiceData\": {\n" +
-                        "\"countryCodeNationalService\": \"170\",\n" +
-                        "\"nationalReimbursementFee\": \"20.00\",\n" +
-                        "\"nationalNetMiscAmountType\": \"A\",\n" +
-                        "\"nationalNetReimbursementFeeBaseAmount\": \"20.00\",\n" +
-                        "\"nationalNetMiscAmount\": \"10.00\",\n" +
-                        "\"addValueTaxReturn\": \"10.00\",\n" +
-                        "\"taxAmountConsumption\": \"10.00\",\n" +
-                        "\"addValueTaxAmount\": \"10.00\",\n" +
-                        "\"costTransactionIndicator\": \"0\",\n" +
-                        "\"emvTransactionIndicator\": \"1\",\n" +
-                        "\"nationalChargebackReason\": \"11\"\n" +
-                        "},\n" +
-                        "\"riskAssessmentData\": {\n" +
-                        "\"delegatedAuthenticationIndicator\": true,\n" +
-                        "\"lowValueExemptionIndicator\": true,\n" +
-                        "\"traExemptionIndicator\": true,\n" +
-                        "\"trustedMerchantExemptionIndicator\": true,\n" +
-                        "\"scpExemptionIndicator\": true\n" +
-                        "},\n" +
-                        "\"visaMerchantIdentifier\": \"73625198\"\n" +
-                        "}";
+//
+                EditTextValue = "840@408999@4957030420210496@412770451018@4653459515756154";
                 try {
                     bitmap = TextToImageEncode(EditTextValue);
 

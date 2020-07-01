@@ -44,6 +44,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.visa.ATM.QrCodeHelper.QrCodeGenerater;
 import com.visa.ATM.R;
 import com.visa.ATM.Request;
 import com.visa.ATM.data;
@@ -69,6 +70,15 @@ public class HomeCashProvider extends  AppCompatActivity {
         //hide the status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        this.findViewById(R.id.b_sQr).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext() , QrCodeGenerater.class));
+            }
+        });
+
 
         Dexter.withActivity(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {

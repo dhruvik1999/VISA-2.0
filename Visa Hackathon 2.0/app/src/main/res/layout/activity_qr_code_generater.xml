@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".QrCodeHelper.QrCodeGenerater">
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:hint="Enter Text Here"
-        android:gravity="center"
-        />
+
 
     <Button
         android:layout_width="fill_parent"
