@@ -54,6 +54,7 @@ import java.util.Objects;
 
 
 public class HomeCashProvider extends  AppCompatActivity {
+    FetchCordinates fetchCordinates=new FetchCordinates();
     private ArrayList<Request> requestsList = new ArrayList<>();
 
     Intent locatorService = null;
@@ -120,7 +121,7 @@ public class HomeCashProvider extends  AppCompatActivity {
 
 
 
-        FetchCordinates fetchCordinates=new FetchCordinates();
+
        // Toast.makeText(HomeCashProvider.this,"Starting execution",Toast.LENGTH_SHORT).show();
         fetchCordinates.execute();
 
@@ -136,8 +137,11 @@ public class HomeCashProvider extends  AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (back_pressed + 2000 > System.currentTimeMillis())
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+            fetchCordinates.cancel(true);
+            fetchCordinates.onCancelled();
             finishAffinity();
+        }
         else Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT).show();
         back_pressed = System.currentTimeMillis();
     }
@@ -176,7 +180,7 @@ public class HomeCashProvider extends  AppCompatActivity {
             @Override
             protected void onCancelled() {
                 //Toast.makeText(HomeCashProvider.this,"cancel",Toast.LENGTH_LONG).show();
-                mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
+               mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
             }
 
             @Override
@@ -212,7 +216,7 @@ public class HomeCashProvider extends  AppCompatActivity {
 
                         lati = location.getLatitude();
                         longi = location.getLongitude();
-                       // Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
+                        Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
                         DatabaseReference forcashprovider=FirebaseDatabase.getInstance().getReference();
                         String username=data.userId;
                         forcashprovider.child("cashProviders").child(username).child("latitude").setValue(lati);
