@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.visa.ATM.QrCodeHelper.QrCodeScanner;
+
 public class OptionsLogin extends AppCompatActivity {
 
     Button cashProvider,user;
