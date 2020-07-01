@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.visa.ATM.QrCodeHelper.QrCodeScanner;
+
 public class OptionsLogin extends AppCompatActivity {
 
     Button cashProvider,user;
@@ -29,9 +31,10 @@ public class OptionsLogin extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Login.class);
-                i.putExtra("option","us");
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(), Login.class);
+//                i.putExtra("option","us");
+//                startActivity(i);
+                startActivity(new Intent(getApplicationContext() , QrCodeScanner.class));
             }
         });
     }
