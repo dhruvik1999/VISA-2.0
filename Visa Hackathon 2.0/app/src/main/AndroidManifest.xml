@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QrCodeHelper.QrCodeGenerater"></activity>
+        <activity android:name=".QrCodeHelper.QrCodeScanner"></activity>
+        <activity android:name=".QrCodeHelper.QrCodeGenerater" />
         <activity android:name=".VisaDirect.TransactionResult" />
         <activity android:name=".VisaDirect.VisaDirectHome" />
         <activity android:name=".User.PayHelper" />
