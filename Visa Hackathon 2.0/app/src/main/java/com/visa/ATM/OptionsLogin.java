@@ -31,10 +31,9 @@ public class OptionsLogin extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(), Login.class);
-//                i.putExtra("option","us");
-//                startActivity(i);
-                startActivity(new Intent(getApplicationContext() , QrCodeScanner.class));
+                Intent i = new Intent(getApplicationContext(), Login.class);
+                i.putExtra("option","us");
+                startActivity(i);
             }
         });
     }

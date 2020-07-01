@@ -35,6 +35,8 @@ public class QrCodeScanner extends AppCompatActivity {
 //        }
 //        Log.d("-------------------> : " , c[0]);
 
+
+
     }
 
     //Getting the scan results
