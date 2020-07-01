@@ -27,6 +27,7 @@ public class TransactionResult extends AppCompatActivity {
         String pushJson=getIntent().getStringExtra("PUSH_JSON");
 
         String response = "";
+        String tid = "";
         init();
 
         try {
@@ -34,6 +35,7 @@ public class TransactionResult extends AppCompatActivity {
             PullPojo pull = g.fromJson(pullJson, PullPojo.class);
             Toast.makeText(getApplicationContext(),pull.getTransactionIdentifier(),Toast.LENGTH_LONG).show();
             response = "Pull Transaction:\n Transaction Identifier" + pull.getTransactionIdentifier();
+            tid = pull.getTransactionIdentifier();
         }catch(Exception e){
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Pull transaction failed",Toast.LENGTH_LONG).show();
@@ -42,6 +44,7 @@ public class TransactionResult extends AppCompatActivity {
             try {
                 Gson g = new Gson();
                 PushPojo push = g.fromJson(pushJson, PushPojo.class);
+                push.setTransactionIdentifier(tid);
                 Toast.makeText(getApplicationContext(), push.getTransactionIdentifier(), Toast.LENGTH_LONG).show();
                 response = response + "\n\n" + "Push Transaction: " + "\n" + " Transaction Identifier\n" + push.getTransactionIdentifier();
             }catch (Exception e){

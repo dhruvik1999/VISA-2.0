@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
         {
             logintext.setText("User Login");
         }
-        Toast.makeText(getApplicationContext(),option,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(),option,Toast.LENGTH_SHORT).show();
 
         SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
