@@ -106,19 +106,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="10dp"
         android:layout_below="@+id/tv_cp_status">
-
-        <Button
-            android:visibility="invisible"
-            android:layout_weight="10"
-            android:layout_width="0dp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_rounded"
-            android:layout_height="match_parent"
-            android:text="Delete"
-            android:textSize="25dp"
-            />
 
         <Button
             android:id="@+id/b_pay"
@@ -126,24 +115,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="pay"
+            android:layout_marginRight="5dp"
             android:textColor="@color/white"
             android:background="@drawable/button_rounded"
             android:textSize="25dp"
             />
 
-        <Button
-            android:visibility="invisible"
-            android:layout_weight="50"
-            android:layout_width="0dp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_rounded"
-            android:layout_height="match_parent"
-            android:text="Delete"
-            android:textSize="25dp"
-            />
+
         <Button
             android:id="@+id/b_delete"
             android:layout_weight="50"
+            android:layout_marginLeft="5dp"
             android:layout_width="0dp"
             android:textColor="@color/white"
             android:background="@drawable/button_rounded"
@@ -151,16 +133,7 @@
             android:text="Delete"
             android:textSize="25dp"
             />
-        <Button
-            android:visibility="invisible"
-            android:layout_weight="10"
-            android:layout_width="0dp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_rounded"
-            android:layout_height="match_parent"
-            android:text="Delete"
-            android:textSize="25dp"
-            />
+
 
     </LinearLayout>
 

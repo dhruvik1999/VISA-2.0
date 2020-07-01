@@ -3,69 +3,98 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/visacolor"
     android:layout_height="match_parent"
     tools:context=".VisaDirect.VisaDirectHome">
 
     <TextView
         android:id="@+id/tv_title"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="VISA Direct "
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="30dp"
         />
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="336dp"
+        android:layout_height="432dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintVertical_bias="0.457">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            >
     <TextView
         android:id="@+id/tv_l_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cash Provider : "
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tv_title"
+        android:gravity="center"
         android:layout_marginTop="50dp"
         android:textSize="20dp"
+        android:textColor="@color/visacolor"
         />
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_l_name"
+        android:gravity="center"
         android:text="Dhruvik"
         android:layout_centerHorizontal="true"
-
+        android:textColor="@color/visacolor"
         android:textSize="25dp"
         />
 
     <TextView
         android:id="@+id/tv_l_rate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Rate : "
+        android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-
+        android:textColor="@color/visacolor"
         android:layout_below="@+id/tv_name"
 
         android:textSize="20dp"
         />
     <TextView
         android:id="@+id/tv_rate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_l_rate"
+        android:gravity="center"
         android:text="-"
         android:layout_centerHorizontal="true"
-
+        android:textColor="@color/visacolor"
         android:textSize="25dp"
         />
 
     <TextView
         android:id="@+id/tv_l_amount"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Amount : "
+        android:gravity="center"
         android:layout_marginTop="15dp"
-
+        android:textColor="@color/visacolor"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/tv_rate"
 
@@ -76,21 +105,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-
+android:textColor="@color/visacolor"
         android:layout_below="@+id/tv_l_amount"
         android:hint="Amount to pay"
         android:textSize="30dp"
         />
 
-    <Button
-        android:id="@+id/b_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pay"
-        android:gravity="center"
-        android:layout_below="@+id/et_amount"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        />
+            <Button
+                android:id="@+id/b_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pay"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/white"
+                android:background="#323232"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>
