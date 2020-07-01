@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+import com.visa.ATM.QrCodeHelper.QrCodeScanner;
 import com.visa.ATM.R;
 
 public class VisaDirectHome extends AppCompatActivity {
@@ -56,21 +57,33 @@ public class VisaDirectHome extends AppCompatActivity {
                         Log.d("CHECK1",obj.toString());
 //                        Toast.makeText(getApplicationContext(),"Transaction pull", Toast.LENGTH_SHORT).show();
 
-                        Python py1 = Python.getInstance();
-                        PyObject pyf1 = py1.getModule("push");
-                        final PyObject obj1 = pyf1.callAttr("pushMoney",cpAmount);
-                        Log.d("CHECK",obj1.toString());
-//                        Toast.makeText(getApplicationContext(),"Transaction push", Toast.LENGTH_SHORT).show();
+//                        Python py1 = Python.getInstance();
+//                        PyObject pyf1 = py1.getModule("push");
+//                        final PyObject obj1 = pyf1.callAttr("pushMoney",cpAmount);
+//                        Log.d("CHECK",obj1.toString());
+////                        Toast.makeText(getApplicationContext(),"Transaction push", Toast.LENGTH_SHORT).show();
+//
+//                        handler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                Intent intent = new Intent( getApplicationContext() , TransactionResult.class );
+//                                intent.putExtra("PULL_JSON",obj.toString());
+//                                intent.putExtra("PUSH_JSON",obj1.toString());
+//                                startActivity(intent);
+//                            }
+//                        });
 
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent( getApplicationContext() , TransactionResult.class );
+                                Intent intent = new Intent( getApplicationContext() , QrCodeScanner.class );
                                 intent.putExtra("PULL_JSON",obj.toString());
-                                intent.putExtra("PUSH_JSON",obj1.toString());
+                                intent.putExtra("AMOUNT",cpAmount);
+//                                intent.putExtra("PUSH_JSON",obj1.toString());
                                 startActivity(intent);
                             }
                         });
+
 
                     }
                 }).start();
