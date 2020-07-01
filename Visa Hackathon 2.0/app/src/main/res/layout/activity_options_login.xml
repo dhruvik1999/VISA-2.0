@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OptionsLogin"
+    android:padding="15dp"
+    android:background="@color/visacolor"
     android:orientation="vertical"
     >
 
@@ -17,28 +19,31 @@
         android:id="@+id/b_user"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/need_cash"
+        android:background="@drawable/user"
+        android:drawableTint="@color/visacolor"
         android:layout_weight="1"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:background="@color/visacolor"
         ></Button>
-
     <Button
         android:id="@+id/b_cashProvider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/cash_provider"
-        android:text="Cash Provider"
+        android:background="@drawable/cp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#000000" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/visacolor"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="POWERED BY VISA DIRECT"
         ></Button>
 
 </LinearLayout>

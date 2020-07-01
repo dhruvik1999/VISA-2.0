@@ -17,7 +17,6 @@ import com.visa.ATM.R;
 
 public class QrCodeGenerater extends AppCompatActivity {
     ImageView imageView;
-    Button button;
     EditText editText;
     String EditTextValue ;
     Thread thread ;
@@ -28,14 +27,9 @@ public class QrCodeGenerater extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_code_generater);
         imageView = (ImageView)findViewById(R.id.imageView);
-        editText = (EditText)findViewById(R.id.editText);
-        button = (Button)findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-//
+
                 EditTextValue = "840@408999@4957030420210496@412770451018@4653459515756154";
                 try {
                     bitmap = TextToImageEncode(EditTextValue);
@@ -46,8 +40,7 @@ public class QrCodeGenerater extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-            }
-        });
+
     }
 
 
