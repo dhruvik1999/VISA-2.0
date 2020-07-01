@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:background="@color/visacolor"
             android:textColor="@color/white"
-            android:text="Powered By VISA INC."
+            android:text="Powered By VISA"
             android:layout_weight="6"
             ></Button>
 
