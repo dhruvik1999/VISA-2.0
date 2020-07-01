@@ -57,6 +57,7 @@ public class TransactionResult extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),UserHomeScreen.class));
+
             }
         });
     }
