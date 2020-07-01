@@ -20,13 +20,13 @@ body={}
 
 timeout=10
 
-def getPayload(amt,trId):
+def getPayload(amt,trId,cc,accbin,pacc,rnn,san):
   date = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
   print(date)
   payload = json.loads('''
   {
-  "acquirerCountryCode": "840",
-  "acquiringBin": "408999",
+  "acquirerCountryCode": "'''+cc+'''",
+  "acquiringBin": "'''+accbin+'''",
   "amount": "'''+str(amt)+'''",
   "businessApplicationId": "AA",
   "cardAcceptor": {
@@ -48,9 +48,9 @@ def getPayload(amt,trId):
   "posConditionCode": "00"
   },
   "recipientName": "rohan",
-  "recipientPrimaryAccountNumber": "4957030420210496",
-  "retrievalReferenceNumber": "412770451018",
-  "senderAccountNumber": "4653459515756154",
+  "recipientPrimaryAccountNumber": "'''+pacc+'''",
+  "retrievalReferenceNumber": "'''+rnn+'''",
+  "senderAccountNumber": "'''+san+'''",
   "senderAddress": "901 Metro Center Blvd",
   "senderCity": "Foster City",
   "senderCountryCode": "124",
@@ -60,7 +60,7 @@ def getPayload(amt,trId):
   "sourceOfFundsCode": "05",
   "systemsTraceAuditNumber": "451018",
   "transactionCurrencyCode": "USD",
-  "transactionIdentifier": "381228649430015",
+  "transactionIdentifier": "'''+trId+'''",
   "settlementServiceIndicator": "9",
   "colombiaNationalServiceData": {
   "countryCodeNationalService": "170",
@@ -79,12 +79,12 @@ def getPayload(amt,trId):
   ''')
   return payload
 
-def pushMoney(amt=1000,trId=381228649430015):
+def pushMoney(amt=1000,trId="381228649430015",cc="840",accbin="408999",pacc="4957030420210496",rrn="412770451018",san="4653459515756154"):
   r = requests.post(url,
                   cert = (cert,key),
                   headers = headers,
                   auth = (user_id, password),
-                  json=getPayload(amt,pushMoney),
+                  json=getPayload(amt,trId,cc,accbin,pacc,rrn,san),
                   timeout=timeout)
 
   print(r.text)

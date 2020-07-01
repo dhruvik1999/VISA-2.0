@@ -61,7 +61,7 @@ public class QrCodeScanner extends AppCompatActivity {
                 //if qr contains data
                 try {
                     //converting the data to json
-                    String[] resps = result.getContents().split("@");
+                    final String[] resps = result.getContents().split("@");
                     for(String s : resps){
                         Log.d("String : " , s);
                     }
@@ -77,22 +77,35 @@ public class QrCodeScanner extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            Python py1 = Python.getInstance();
-                            PyObject pyf1 = py1.getModule("push");
-                            final PyObject obj1 = pyf1.callAttr("pushMoney",cpAmount);
-                            Log.d("CHECK",obj1.toString());
+                            try {
+                                Python py1 = Python.getInstance();
+                                PyObject pyf1 = py1.getModule("push");
+                                final PyObject obj1 = pyf1.callAttr("pushMoney", cpAmount, "381228649430015", resps[0], resps[1], resps[2], resps[3], resps[4]);
+                                Log.d("CHECK", obj1.toString());
 
 
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent intent = new Intent( getApplicationContext() , TransactionResult.class );
-                                    intent.putExtra("PUSH_JSON",obj1.toString());
-                                    intent.putExtra("PULL_JSON",pullJson);
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(getApplicationContext(), TransactionResult.class);
+                                        intent.putExtra("PUSH_JSON", obj1.toString());
+                                        intent.putExtra("PULL_JSON", pullJson);
 //                                intent.putExtra("PUSH_JSON",obj1.toString());
-                                    startActivity(intent);
-                                }
-                            });
+                                        startActivity(intent);
+                                    }
+                                });
+                            }catch (Exception e){
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(getApplicationContext(), TransactionResult.class);
+                                        intent.putExtra("PUSH_JSON", "Failed");
+                                        intent.putExtra("PULL_JSON", "Failed");
+//                                intent.putExtra("PUSH_JSON",obj1.toString());
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
 //                        Toast.makeText(getApplicationContext(),"Transaction push", Toast.LENGTH_SHORT).show();
 
 
