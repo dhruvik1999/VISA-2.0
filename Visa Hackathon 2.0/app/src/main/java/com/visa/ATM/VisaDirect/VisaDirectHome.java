@@ -35,7 +35,8 @@ public class VisaDirectHome extends AppCompatActivity {
         double cpRate = Double.parseDouble(getIntent().getStringExtra("RATE").toString());
 
         cpAmount = (1+cpRate/100)*cpAmount;
-
+        cpAmount = (double)Math.round(cpAmount*100)/100;
+        Log.d("Amoutn" , String.valueOf(cpAmount));
         tvName.setText( cpName );
         etAmount.setText( String.valueOf(cpAmount));
         tvRate.setText(String.valueOf(cpRate));
