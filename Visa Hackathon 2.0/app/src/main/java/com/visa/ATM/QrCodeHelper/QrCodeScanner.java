@@ -92,6 +92,7 @@ public class QrCodeScanner extends AppCompatActivity {
                                         intent.putExtra("PULL_JSON", pullJson);
 //                                intent.putExtra("PUSH_JSON",obj1.toString());
                                         startActivity(intent);
+                                        finish();
                                     }
                                 });
                             }catch (Exception e){
@@ -103,6 +104,8 @@ public class QrCodeScanner extends AppCompatActivity {
                                         intent.putExtra("PULL_JSON", "Failed");
 //                                intent.putExtra("PUSH_JSON",obj1.toString());
                                         startActivity(intent);
+                                        finish();
+
                                     }
                                 });
                             }
@@ -128,4 +131,9 @@ public class QrCodeScanner extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

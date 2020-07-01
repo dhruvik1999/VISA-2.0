@@ -61,7 +61,7 @@ public class SignUp extends AppCompatActivity {
 
                 if (Password.getText().toString().equals(ConfirmPassword.getText().toString()))
                 {
-                    Toast.makeText(getApplicationContext(),"" + option, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"" + option, Toast.LENGTH_SHORT).show();
                     if(option.equals("cp"))
                     {
                         cashProviders[0] = FirebaseDatabase.getInstance().getReference().child("cashProviders");
@@ -153,7 +153,7 @@ public class SignUp extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Sign Unsuccessful", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Sign Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
             }});
 

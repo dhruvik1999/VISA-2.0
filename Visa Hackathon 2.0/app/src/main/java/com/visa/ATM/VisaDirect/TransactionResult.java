@@ -15,8 +15,9 @@ import com.visa.ATM.User.UserHomeScreen;
 
 public class TransactionResult extends AppCompatActivity {
 
-    TextView tvResult;
+    TextView pullRes,pushRes,fres;
     Button bBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,25 +35,30 @@ public class TransactionResult extends AppCompatActivity {
             Gson g = new Gson();
             PullPojo pull = g.fromJson(pullJson, PullPojo.class);
             Toast.makeText(getApplicationContext(),pull.getTransactionIdentifier(),Toast.LENGTH_LONG).show();
-            response = "Pull Transaction:\n Transaction Identifier" + pull.getTransactionIdentifier();
+            response = "Pull Transaction:\n Transaction Identifier\n" + pull.getTransactionIdentifier();
             tid = pull.getTransactionIdentifier();
+            pullRes.setText(pull.getTransactionIdentifier());
         }catch(Exception e){
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Pull transaction failed",Toast.LENGTH_LONG).show();
-            tvResult.setText("transaction Failed. \n Try again latter");
+            pullRes.setText("Payment Failed !");
+            fres.setText("Payment Failed !");
         }finally {
             try {
                 Gson g = new Gson();
                 PushPojo push = g.fromJson(pushJson, PushPojo.class);
-                push.setTransactionIdentifier(tid);
-                Toast.makeText(getApplicationContext(), push.getTransactionIdentifier(), Toast.LENGTH_LONG).show();
-                response = response + "\n\n" + "Push Transaction: " + "\n" + " Transaction Identifier\n" + push.getTransactionIdentifier();
+//                Toast.makeText(getApplicationContext(), push.getTransactionIdentifier(), Toast.LENGTH_LONG).show();
+//                response = response + "\n\n" + "Push Transaction: " + "\n" + " Transaction Identifier\n" + push.getTransactionIdentifier();
+                pushRes.setText(push.getTransactionIdentifier());
             }catch (Exception e){
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(),"Pull transaction failed",Toast.LENGTH_LONG).show();
-                tvResult.setText("transaction Failed. \n Try again latter");
+//                Toast.makeText(getApplicationContext(),"Pull transaction failed",Toast.LENGTH_LONG).show();
+                pushRes.setText("Payment Failed !");
+                fres.setText("Payment Failed !");
+
             }finally {
-                tvResult.setText(response);
+//                .setText(response);
+                fres.setText("Payment Successful !  ");
             }
         }
 
@@ -66,8 +72,11 @@ public class TransactionResult extends AppCompatActivity {
     }
 
     private void init(){
-        tvResult = this.findViewById(R.id.tv_results);
+//        tvResult = this.findViewById(R.id.tv_results);
         bBack = this.findViewById(R.id.b_back);
+        pullRes = this.findViewById(R.id.pull_tp);
+        pushRes = this.findViewById(R.id.push_tp);
+        fres = this.findViewById(R.id.fres);
     }
 
     @Override

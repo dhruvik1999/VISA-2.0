@@ -203,7 +203,6 @@ public class HomeCashProvider extends  AppCompatActivity {
 
             @Override
             protected String doInBackground(String... params) {
-                // TODO Auto-generated method stud
 
                 return null;
             }
@@ -234,8 +233,7 @@ public class HomeCashProvider extends  AppCompatActivity {
                        // Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         // progDailog.dismiss();
-                         Toast.makeText(getApplicationContext(),"Unable to get Location"
-                        , Toast.LENGTH_LONG).show();
+                         Toast.makeText(getApplicationContext(),"Unable to get Location", Toast.LENGTH_LONG).show();
                     }
 
                 }

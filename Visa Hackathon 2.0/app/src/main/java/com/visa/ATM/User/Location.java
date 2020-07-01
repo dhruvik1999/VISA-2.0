@@ -45,7 +45,7 @@ public class Location {
                 public void onComplete(@NonNull Task<android.location.Location> task) {
                     android.location.Location location = task.getResult();
                     if(location!=null){
-                        Toast.makeText(context,location.getLatitude()+"", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context,location.getLatitude()+"", Toast.LENGTH_SHORT).show();
                         latitude = location.getLatitude();
                         longitude = location.getLongitude();
                     }

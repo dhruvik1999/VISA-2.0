@@ -3,33 +3,133 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/visacolor"
     android:layout_height="match_parent"
+    android:background="@color/visacolor"
     android:padding="10dp"
     tools:context=".VisaDirect.TransactionResult">
 
-    <TextView
-        android:id="@+id/tv_results"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_centerVertical="true"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:text="Result"
-        />
 
-    <Button
-        android:id="@+id/b_back"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:background="@color/black"
-        android:textSize="20dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"
+    <androidx.cardview.widget.CardView
+        android:layout_width="336dp"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
         android:layout_centerHorizontal="true"
-        android:text="back"
-        />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/pt"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Pull Transaction"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/visacolor"
+            />
+
+        <TextView
+            android:id="@+id/pt2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Transaction Identifier"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_below="@+id/pt"
+            android:textColor="@color/visacolor"
+            />
+            <TextView
+                android:id="@+id/pull_tp"
+                android:layout_below="@+id/pt2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="123456"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/visacolor"
+                />
+
+
+            <TextView
+                android:id="@+id/put"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Push Transaction"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/pull_tp"
+                android:textColor="@color/visacolor"
+                android:layout_marginTop="50dp"
+                />
+
+            <TextView
+                android:id="@+id/put2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Transaction Identifier"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_below="@+id/put"
+                android:textColor="@color/visacolor"
+                />
+            <TextView
+                android:id="@+id/push_tp"
+                android:layout_below="@+id/put2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="123456"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/visacolor"
+                />
+
+            <TextView
+                android:id="@+id/fres"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/push_tp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="Payment Successful"
+                android:gravity="center"
+                android:textSize="20dp"
+                />
+
+            <Button
+                android:id="@+id/b_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/visacolor"
+                android:text="back"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
 
 </RelativeLayout>

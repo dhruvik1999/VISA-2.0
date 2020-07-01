@@ -94,7 +94,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactHolder> {
 
                     DatabaseReference requestref= FirebaseDatabase.getInstance().getReference().child("cashProviders").child(username).child("Requests");
                     requestref.child(user_del).removeValue();
-                    Toast.makeText(mContext,"Request From "+username+" Accepted !",Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext,"Request From "+user_del+" Accepted !",Toast.LENGTH_LONG).show();
                     notifyDataSetChanged();
                     Response response=new Response();
                     response.setAmount(Double.parseDouble(amount.getText().toString()));
@@ -119,7 +119,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactHolder> {
 
                     DatabaseReference requestref= FirebaseDatabase.getInstance().getReference().child("cashProviders").child(username).child("Requests");
                     requestref.child(user_del).removeValue();
-                    Toast.makeText(mContext,"Request From "+username+" Declined !",Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext,"Request From "+user_del+" Declined !",Toast.LENGTH_LONG).show();
                     notifyDataSetChanged();
 
 
