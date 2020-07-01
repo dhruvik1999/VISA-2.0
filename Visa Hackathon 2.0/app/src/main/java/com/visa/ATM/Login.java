@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -40,10 +41,14 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //hide the status bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         Email=findViewById(R.id.emailEditText);
         Password=findViewById(R.id.passwordEditText);
+        TextView logintext=findViewById(R.id.loginTitleTextView);
         final Button LoginButton=(Button)findViewById(R.id.loginbutton) ;
         final Button SignupButton = (Button) findViewById(R.id.signupbutton);
 
@@ -52,6 +57,14 @@ public class Login extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String option = Objects.requireNonNull(intent.getExtras()).getString("option");
+        if(option.equals("cp"))
+        {
+        logintext.setText("Cash Provider Login");
+        }
+        if(option.equals("us"))
+        {
+            logintext.setText("User Login");
+        }
         Toast.makeText(getApplicationContext(),option,Toast.LENGTH_SHORT).show();
 
         SignupButton.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +78,7 @@ public class Login extends AppCompatActivity {
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                assert option != null;
+               // assert option != null;
                 if (option.equals("cp")){
 
                     cashProviders.addListenerForSingleValueEvent(new ValueEventListener() {

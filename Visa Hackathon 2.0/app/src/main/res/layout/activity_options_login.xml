@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OptionsLogin">
+    tools:context=".OptionsLogin"
+    android:orientation="vertical"
+    >
 
     <Button
-        android:id="@+id/b_cashProvide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cash Provider"
-        />
-
+        android:background="@color/visacolor"
+        ></Button>
     <Button
         android:id="@+id/b_user"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="user"
-        android:layout_below="@+id/b_cashProvide"
+        android:layout_height="match_parent"
+        android:background="@drawable/need_cash"
+        android:layout_weight="1"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/visacolor"
+        ></Button>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/b_cashProvider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/cash_provider"
+        android:text="Cash Provider"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#000000" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/visacolor"
+        ></Button>
+
+</LinearLayout>

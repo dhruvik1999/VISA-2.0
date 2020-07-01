@@ -27,6 +27,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -37,6 +38,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.visa.ATM.R;
 import com.visa.ATM.Request;
 import com.visa.ATM.data;
@@ -47,6 +54,7 @@ import java.util.Objects;
 
 
 public class HomeCashProvider extends  AppCompatActivity {
+    FetchCordinates fetchCordinates=new FetchCordinates();
     private ArrayList<Request> requestsList = new ArrayList<>();
 
     Intent locatorService = null;
@@ -58,7 +66,27 @@ public class HomeCashProvider extends  AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cash_provider);
+        //hide the status bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Dexter.withActivity(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                    Toast.makeText(HomeCashProvider.this,"You Have The Location Permission !",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        Toast.makeText(HomeCashProvider.this,"You Should Accept This Permission !!",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+
+                    }
+                }).check();
         RecyclerView recycler = findViewById(R.id.recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
@@ -94,7 +122,6 @@ public class HomeCashProvider extends  AppCompatActivity {
 
 
 
-        FetchCordinates fetchCordinates=new FetchCordinates();
        // Toast.makeText(HomeCashProvider.this,"Starting execution",Toast.LENGTH_SHORT).show();
         fetchCordinates.execute();
 
@@ -105,6 +132,19 @@ public class HomeCashProvider extends  AppCompatActivity {
     }
 
 
+
+    private static long back_pressed=System.currentTimeMillis();
+    @Override
+    public void onBackPressed() {
+
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+            fetchCordinates.cancel(true);
+            fetchCordinates.onCancelled();
+            finishAffinity();
+        }
+        else Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT).show();
+        back_pressed = System.currentTimeMillis();
+    }
 
        public class FetchCordinates extends AsyncTask<String, Integer, String> {
 
@@ -139,8 +179,8 @@ public class HomeCashProvider extends  AppCompatActivity {
 
             @Override
             protected void onCancelled() {
-                Toast.makeText(HomeCashProvider.this,"cancel",Toast.LENGTH_LONG).show();
-                //mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
+                //Toast.makeText(HomeCashProvider.this,"cancel",Toast.LENGTH_LONG).show();
+               mLocationManager.removeUpdates((LocationListener) mVeggsterLocationListener);
             }
 
             @Override
@@ -179,10 +219,9 @@ public class HomeCashProvider extends  AppCompatActivity {
                         Toast.makeText(HomeCashProvider.this,"Latitude: "+lati+" Longitude: "+longi, Toast.LENGTH_LONG).show();
                         DatabaseReference forcashprovider=FirebaseDatabase.getInstance().getReference();
                         String username=data.userId;
-
                         forcashprovider.child("cashProviders").child(username).child("latitude").setValue(lati);
                         forcashprovider.child("cashProviders").child(username).child("longitude").setValue(longi);
-                        Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(HomeCashProvider.this,"Location Updated !",Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         // progDailog.dismiss();
                          Toast.makeText(getApplicationContext(),"Unable to get Location"

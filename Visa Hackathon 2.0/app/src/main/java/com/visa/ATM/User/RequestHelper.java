@@ -3,8 +3,10 @@ package com.visa.ATM.User;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.visa.ATM.CashProviders;
+import com.visa.ATM.Login;
 import com.visa.ATM.R;
 import com.visa.ATM.Request;
 import com.visa.ATM.data;
@@ -32,7 +35,9 @@ public class RequestHelper extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_helper);
-
+        //hide the status bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         init();
 
         String atmName = getIntent().getStringExtra("ATM_NAME");
@@ -54,8 +59,10 @@ public class RequestHelper extends AppCompatActivity {
                 request.setAmount( Double.parseDouble(etAmount.getText().toString()) );
                 request.setRate((double)1.2);
                 request.setName(data.userId);
-
                 reference.child("Requests").child(data.userId).setValue(request);
+                Intent i = new Intent(getApplicationContext(), UserHomeScreen.class);
+                startActivity(i);
+
             }
         });
 
