@@ -47,7 +47,7 @@ public class RequestHelper extends AppCompatActivity {
             name = name+atmName.charAt(i);
         }
         reference = FirebaseDatabase.getInstance().getReference().child("cashProviders").child(name);
-        Toast.makeText(getApplicationContext(),"-"+name+"-",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"-"+name+"-",Toast.LENGTH_SHORT).show();
         fillData(name);
 
 

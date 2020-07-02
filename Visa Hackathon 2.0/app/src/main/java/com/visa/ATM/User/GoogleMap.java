@@ -19,6 +19,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -59,10 +60,12 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
         googleMap.setOnInfoWindowClickListener(new com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(getApplicationContext(),marker.getTitle(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),RequestHelper.class);
-                intent.putExtra("ATM_NAME",marker.getTitle());
-                startActivity(intent);
+                if(marker.getTitle().equals("Me")==false) {
+//                    Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), RequestHelper.class);
+                    intent.putExtra("ATM_NAME", marker.getTitle());
+                    startActivity(intent);
+                }
             }
         });
 
@@ -88,7 +91,13 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback {
                         double longitude = location.getLongitude();
 
                         LatLng point = new LatLng(latitude, longitude);
-                        googleMap.addMarker(new MarkerOptions().position(point).title("me"));
+
+                        MarkerOptions mrk = new MarkerOptions();
+                        mrk.position(point);
+                        mrk.title("Me");
+                        mrk.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+
+                        googleMap.addMarker(mrk);
                         googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
 
                     }
