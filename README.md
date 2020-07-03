@@ -27,7 +27,7 @@ Further, this idea can be expanded to create a co-operative system where governm
 
 With this idea, people would be more inclined to get “rid” of cash, as they are getting profit from giving cash, which would benefit the cashless economy in the long run.
 
-Demo Video Link: https://drive.google.com/fileDemoVideo.mp4/d/1u2kWQu_QzY7n4ezEgCwusItUspwrQe-p/view?usp=sharing
+Demo Video Link: https://drive.google.com/file/d/1u2kWQu_QzY7n4ezEgCwusItUspwrQe-p/view?usp=sharing
 
 **Implementation**
 
